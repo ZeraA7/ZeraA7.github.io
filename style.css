@@ -1,0 +1,28 @@
+body {
+    background-color: #303030; /* Dark grey background for the whole page */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    color: white;
+    text-align: center; /* Centralizes the text and content */
+    display: flex; /* Using Flexbox to align content */
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center; /* Center items horizontally */
+}
+a, img {
+    margin-top: 10px;
+}
+.link, button {
+    margin-top: 10px;
+    display: block; /* Makes link divs and button block level for proper alignment */
+}
+canvas {
+    background-color: #FFFFFF; /* White background for the canvas */
+    border: 2px solid #ddd; 
+    margin-top: 20px; 
+    margin-bottom: 10px; /* Space below the canvas before the button */
+}
+img {
+    max-width: 300px; /* Limits the width of the image */
+    max-height: 300px; /* Limits the height of the image */
+    width: auto; 
+    height: auto; 
+}
