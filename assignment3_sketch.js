@@ -1,4 +1,5 @@
-let input, addWordButton, shuffleButton, wordsList;
+let input, addWordButton, shuffleButton, fullscreenButton, wordsOutput;
+let wordsList = [];
 
 function setup() {
     noCanvas(); // No drawing canvas required
@@ -7,46 +8,53 @@ function setup() {
     input = select('#text-input');
     addWordButton = select('#add-word-btn');
     shuffleButton = select('#shuffle-btn');
-    wordsList = select('#words-list');
+    fullscreenButton = select('#fullscreen-btn');
+    wordsOutput = select('#words-output');
 
-    // Event listeners for adding words and shuffling
+    // Event listeners for adding words, shuffling, and toggling fullscreen
     addWordButton.mousePressed(addWordToList);
     shuffleButton.mousePressed(shuffleWords);
+    fullscreenButton.mousePressed(toggleFullscreen);
 }
 
 function addWordToList() {
     let word = input.value().trim();
     if (word) { // Only add the word if it's not empty
-        let li = createElement('li', word); // Create a list item with the word
-        li.parent(wordsList); // Append it to the unordered list
+        wordsList.push(word); // Add word to the list
         input.value(''); // Clear the input field
+        displayWords(); // Display the current list of words
     }
 }
 
-function shuffleWords() {
-    let items = selectAll('li', wordsList);
-    let order = items.map((_, i) => i); // Create an array of indices
-    order = shuffle(order); // Shuffle the indices
-
-    order.forEach((newPos, i) => {
-        wordsList.child(items[newPos]); // Reorder each item in the list based on the shuffled indices
+function displayWords() {
+    wordsOutput.html(''); // Clear the current display
+    wordsList.forEach(word => {
+        createElement('div', word).parent(wordsOutput); // Display each word in a new div
     });
 }
 
-function shuffle(array) {
-    let currentIndex = array.length, temporaryValue, randomIndex;
+function shuffleWords() {
+    wordsList = shuffleArray(wordsList); // Shuffle the array of words
+    displayWords(); // Redisplay the words in their new order
+}
 
-    // While there remain elements to shuffle...
-    while (0 !== currentIndex) {
-        // Pick a remaining element...
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
+function toggleFullscreen() {
+    let fs = fullscreen();
+    fullscreen(!fs);
+}
 
-        // And swap it with the current element.
-        temporaryValue = array[currentIndex];
-        array[currentIndex] = array[randomIndex];
-        array[randomIndex] = temporaryValue;
+function keyPressed() {
+    if (keyCode === ESCAPE) {
+        if (fullscreen()) {
+            fullscreen(false);
+        }
     }
+}
 
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+    }
     return array;
 }
