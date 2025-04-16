@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lab 5 - JSON (Extra Edition)</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      background: linear-gradient(to right, #3e5151, #decba4);
+      font-family: 'Segoe UI', sans-serif;
+      color: #fff;
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    #quote-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-height: 60vh;
+      overflow-y: auto;
+      margin-top: 20px;
+    }
+
+    .quote {
+      font-size: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 12px 24px;
+      margin: 8px;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      width: 60%;
+      cursor: pointer;
+    }
+
+    .quote:hover {
+      transform: scale(1.05);
+      background: rgba(255, 255, 255, 0.2);
+      color: var(--hover-color);
+    }
+
+    input, button {
+      padding: 10px 16px;
+      margin: 10px 5px;
+      border-radius: 8px;
+      border: none;
+      font-size: 16px;
+    }
+
+    input {
+      width: 50%;
+    }
+
+    button {
+      cursor: pointer;
+      background-color: #ffcc70;
+      color: #333;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      background-color: #ffc35e;
+    }
+  </style>
+</head>
+<body>
+  <h1>🌅 Save + Style Your Thoughts</h1>
+  <input type="text" id="newQuote" placeholder="Type your quote here..." />
+  <button onclick="addQuote()">Add Quote</button>
+  <button onclick="resetQuotes()">Reset All</button>
+
+  <div id="quote-container"></div>
+
+  <script>
+    const defaultQuotes = [
+      "The sunset paints the sky.",
+      "Data brings stories to life.",
+      "P5.js makes creativity easier.",
+      "JavaScript gives the web its pulse."
+    ];
+
+    // Use saved quotes or default
+    let quotes = JSON.parse(localStorage.getItem("quotes")) || defaultQuotes;
+    const container = document.getElementById("quote-container");
+
+    function getRandomHoverColor() {
+      const colors = ['#ffcc70', '#ff6f61', '#ffe66d', '#aad576', '#4ecdc4'];
+      return colors[Math.floor(Math.random() * colors.length)];
+    }
+
+    function displayQuotes() {
+      container.innerHTML = '';
+      quotes.forEach(quote => {
+        const div = document.createElement("div");
+        div.className = "quote";
+        div.textContent = quote;
+        div.style.setProperty('--hover-color', getRandomHoverColor());
+        container.appendChild(div);
+      });
+    }
+
+    function addQuote() {
+      const input = document.getElementById("newQuote");
+      const text = input.value.trim();
+      if (text !== '') {
+        quotes.push(text);
+        localStorage.setItem("quotes", JSON.stringify(quotes));
+        input.value = '';
+        displayQuotes();
+      }
+    }
+
+    function resetQuotes() {
+      quotes = [...defaultQuotes];
+      localStorage.setItem("quotes", JSON.stringify(quotes));
+      displayQuotes();
+    }
+
+    displayQuotes();
+  </script>
+</body>
+</html>

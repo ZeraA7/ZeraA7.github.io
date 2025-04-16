@@ -1,29 +1,31 @@
 let video;
 let img;
+let playButton;
 
 function setup() {
-    noCanvas();
-    const content = select('#content');
+  noCanvas();
 
-    // Setup the video
-    video = createVideo('sun.mp4');
-    video.size(320, 240);
-    video.parent(content);
-    video.elt.controls = true;  // Display controls
+  const container = select('#mediaContainer');
 
-    // Load and display the image
-    img = createImg('sun1.jpg', 'beautiful sunset');
-    img.size(320, 240);
-    img.parent(content);
+  // Load image
+  img = createImg('sun1.jpg', 'Sunset Image');
+  img.size(320, 180);
+  img.parent(container);
 
-    // Button to manually start the video
-    let playButton = createButton('Play Video');
-    playButton.parent(content);
-    playButton.mousePressed(() => {
-        video.play();  // Play the video when the button is clicked
-    });
-}
+  // Load video
+  video = createVideo(['sun.mp4']);
+  video.size(320, 180);
+  video.parent(container);
+  video.hide(); // Hide by default — show it when user clicks play
 
-function draw() {
-    // No continuous rendering needed
+  // Add a Play Button
+  playButton = createButton('▶️ Play Video');
+  playButton.parent(container);
+  playButton.mousePressed(() => {
+    video.show();
+    video.loop();
+    video.volume(0); // Mute by default for autoplay compliance
+    video.play();
+    playButton.hide(); // Hide the button after playing
+  });
 }
