@@ -1,35 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Tareq Darwish</title> 
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+  <meta charset="UTF-8">
+  <title>EchoCanvas Project Hub</title>
+  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #ffecd2, #fcb69f);
+      color: #222;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    h1 {
+      margin-top: 40px;
+      font-size: 2.8rem;
+      font-weight: 300;
+      color: #ff5e57;
+    }
+
+    .subtitle {
+      font-size: 1rem;
+      margin-bottom: 30px;
+      color: #444;
+    }
+
+    .duck-img {
+      width: 150px;
+      margin-bottom: 30px;
+      transition: 0.3s ease;
+    }
+
+    .duck-img:hover {
+      transform: rotate(5deg) scale(1.1);
+    }
+
+    .section {
+      width: 90%;
+      max-width: 600px;
+      margin-bottom: 40px;
+    }
+
+    .section h2 {
+      color: #ff884d;
+      border-bottom: 2px solid #ff884d;
+      padding-bottom: 5px;
+      margin-bottom: 15px;
+    }
+
+    .link-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    a {
+      text-decoration: none;
+      background: rgba(255, 255, 255, 0.8);
+      color: #222;
+      padding: 12px 18px;
+      border-radius: 10px;
+      font-size: 18px;
+      text-align: center;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    a:hover {
+      background-color: #ffe066;
+      transform: scale(1.03);
+    }
+
+    .footer {
+      margin-top: auto;
+      padding: 20px;
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    /* Easter Egg Link */
+    .easter-egg {
+      font-size: 10px;
+      color: #bbb;
+      text-decoration: underline;
+      position: fixed;
+      bottom: 10px;
+      right: 12px;
+      opacity: 0.3;
+      transition: 0.2s;
+    }
+
+    .easter-egg:hover {
+      opacity: 1;
+      color: #ff5e57;
+    }
+  </style>
 </head>
 <body>
-    <h1>Welcome to My Website</h1>
-    <p>My name is Tareq Darwish and this is a placeholder for my future assignments and projects.</p>
-    
-    <a href="https://www.youtube.com/watch?v=xvFZjo5PgG0&ab_channel=Duran">Visit Example</a>
-    <img src="ducky.png" alt="QuackQuakc!">
+  <h1>🎨 EchoCanvas Project Hub</h1>
+  <div class="subtitle">OCADU – Interactive Media Portfolio</div>
 
-    <h2>Future Assignments</h2>
-    <div class="link"><a href="assignment2.html">Assignment 2</a></div>
-    <div class="link"><a href="assignment3.html">Assignment 3</a></div>
-    <div class="link"><a href="assignment4.html">Assignment 4</a></div>
-    <div class="link"><a href="assignment5.html">Assignment 5</a></div>
-    <div class="link"><a href="final_project.html">Final Project</a></div>
+  <img src="ducky.png" alt="Duck mascot" class="duck-img">
 
-    <h2>Labs</h2>
-    <div class="link"><a href="lab1.html">Lab 1</a></div>
-    <div class="link"><a href="lab2.html">Lab 2</a></div>
-    <div class="link"><a href="lab3.html">Lab 3</a></div>
-    <div class="link"><a href="lab4.html">Lab 4</a></div>
-    <div class="link"><a href="lab5.html">Lab 5</a></div>
+  <div class="section">
+    <h2>📚 Labs</h2>
+    <div class="link-list">
+      <a href="lab1.html">Lab 1 – Patterns from Iteration</a>
+      <a href="lab2.html">Lab 2 – Objects</a>
+      <a href="lab3.html">Lab 3 – GUI Drawing</a>
+      <a href="lab4.html">Lab 4 – Multimedia</a>
+      <a href="lab5.html">Lab 5 – JSON / LocalStorage</a>
+    </div>
+  </div>
 
-    <button onclick="resetSketch()">Reset Drawing</button>
+  <div class="section">
+    <h2>📁 Assignments</h2>
+    <div class="link-list">
+      <a href="assignment1.html">Assignment 1 – Citing Code</a>
+      <a href="assignment2.html">Assignment 2 – Interactive Drawing</a>
+      <a href="assignment3.html">Assignment 3 – Text Adventure</a>
+      <a href="assignment4.html">Assignment 4 – Arrays</a>
+      <a href="final.html">🎧 Final Project – Audio Visualizer</a>
+    </div>
+  </div>
 
-    <script src="sketch.js"></script>
-    <script src="script.js"></script>
+  <a class="easter-egg" href="https://www.youtube.com/watch?v=xvFZjo5PgG0&ab_channel=Duran">click me (shhh)</a>
+
+  <div class="footer">
+    Built by Tareq Darwish – OCADU 2025
+  </div>
 </body>
 </html>
