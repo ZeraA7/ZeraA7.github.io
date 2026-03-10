@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01_HORIZON // Singularity OS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <a href="index.html" class="active">01_HORIZON</a>
+        <a href="physics.html">02_PHYSICS</a>
+        <a href="infinity.html">03_INFINITY</a>
+    </nav>
+
+    <div class="telemetry-panel">
+        <div class="data-row"><span>GRAVITY_WELL:</span> <span id="v-data">0.000</span></div>
+        <div class="data-row"><span>DENSITY:</span> <span>STABLE</span></div>
+        <div class="data-row"><span>LIMIT:</span> <span>SCHWARZSCHILD_RADIUS</span></div>
+    </div>
+
+    <div class="data-anchor" style="top: 25%; left: 70%;">
+        <div class="label">[ SYSTEM_DATA: MASS_DENSITY ]</div>
+        <div class="status">DETECTION: ACTIVE</div>
+    </div>
+
+    <div class="data-anchor" style="top: 60%; left: 20%;">
+        <div class="label">[ SYSTEM_DATA: LIGHT_WARP ]</div>
+        <div class="status">DETECTION: ACTIVE</div>
+    </div>
+
+    <div class="content-overlay">
+        <h1>STRICT_GEOMETRY</h1>
+        <p>
+            The <strong>Event Horizon</strong> is the theoretical, "point of no return" boundary surrounding a black hole, beyond which the gravitational pull is so intense that nothing, not even light, can escape.
+            In this phase, we establish the <strong>Grid</strong> the fundamental structure of information. 
+            The system is ordered, but the first signs of gravitational lensing appear at the cursor. 
+        </p>
+    </div>
+
+    <canvas id="c1"></canvas>
+    <script src="script1.js"></script>
+</body>
+</html>
